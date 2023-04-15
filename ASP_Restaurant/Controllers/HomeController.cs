@@ -28,7 +28,14 @@ namespace ASP_Restaurant.Controllers
         }
         public IActionResult Menu()
         {
-            return View();
+            CardMenu cardMenu = new()
+            {
+                ImageUrl = @"~/img/menu-1.jpg",
+                Name = "Chicken Burger",
+                Description = "Очень вкусный бургер",
+                Price = 100
+            };
+            return View(cardMenu);
         }
         public IActionResult About()
         {
@@ -40,7 +47,23 @@ namespace ASP_Restaurant.Controllers
         }
         public IActionResult Team()
         {
-            return View();
+            #region TestAddTeamToList
+            CardTeam cardTeam = new CardTeam()
+            {
+                Name="Oleg Schegolev",
+                ImageUrl = @"~/img/team-1.jpg",
+                Designation ="Master",
+                Facebook= "https://github.com/SchegolevOL",
+                instagram= "https://github.com/SchegolevOL",
+                Twitter = "https://github.com/SchegolevOL"
+            };
+            List<CardTeam> cardTeams = new List<CardTeam>();
+            for (int i = 0; i < 8; i++)
+            {
+                cardTeams.Add(cardTeam);
+            }
+            #endregion T
+            return View(cardTeams);
         }
         public IActionResult Testimonial()
         {
