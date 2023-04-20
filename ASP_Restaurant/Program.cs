@@ -1,10 +1,18 @@
+using ASP_Restaurant.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddDbContext<RestaurantDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"));
+});
 var app = builder.Build();
 
+
+MenuDbInitializer.Seed(app);
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -23,5 +31,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+
 
 app.Run();

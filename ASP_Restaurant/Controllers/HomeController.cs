@@ -6,11 +6,10 @@ namespace ASP_Restaurant.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly RestaurantDbContext restaurantDbContext;
+        public HomeController(RestaurantDbContext restaurantDbContext)
         {
-            _logger = logger;
+            this.restaurantDbContext = restaurantDbContext;
         }
 
         public IActionResult Index()
@@ -28,18 +27,32 @@ namespace ASP_Restaurant.Controllers
         }
         public IActionResult Menu()
         {
-            CardMenu cardMenu = new()
-            {
-                ImageUrl = @"~/img/menu-1.jpg",
-                Name = "Chicken Burger",
-                Description = "Очень вкусный бургер",
-                Price = 100
-            };
-            return View(cardMenu);
+
+            ViewBag.menuNames = restaurantDbContext.menuNames.ToList();
+
+            return View(this.restaurantDbContext.menuPositions.ToList());
         }
         public IActionResult About()
         {
-            return View();
+            #region TestAddTeamToList
+            CardTeam cardTeam = new CardTeam()
+            {
+                Name = "Oleg Schegolev",
+                ImageUrl = @"/img/team-1.jpg",
+                Designation = "Master",
+                Facebook = "https://github.com/SchegolevOL",
+                instagram = "https://github.com/SchegolevOL",
+                Twitter = "https://github.com/SchegolevOL",
+                MasterChefs = true
+            };
+            List<CardTeam> cardTeams = new List<CardTeam>();
+            for (int i = 0; i < 4; i++)
+            {
+                cardTeams.Add(cardTeam);
+            }
+            #endregion
+
+            return View(cardTeams);
         }
         public IActionResult Services()
         {
@@ -51,7 +64,7 @@ namespace ASP_Restaurant.Controllers
             CardTeam cardTeam = new CardTeam()
             {
                 Name="Oleg Schegolev",
-                ImageUrl = @"~/img/team-1.jpg",
+                ImageUrl = @"/img/team-1.jpg",
                 Designation ="Master",
                 Facebook= "https://github.com/SchegolevOL",
                 instagram= "https://github.com/SchegolevOL",
@@ -62,8 +75,16 @@ namespace ASP_Restaurant.Controllers
             {
                 cardTeams.Add(cardTeam);
             }
-            #endregion T
+            #endregion
+
+
+
             return View(cardTeams);
+        }
+
+        public IActionResult Admin()
+        {
+            return View();
         }
         public IActionResult Testimonial()
         {

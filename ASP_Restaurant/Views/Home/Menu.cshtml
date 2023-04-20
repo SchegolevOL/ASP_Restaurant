@@ -1,4 +1,4 @@
-﻿@model CardMenu
+﻿@model IEnumerable<MenuPosition>
 @{
     ViewData["Title"] = "Food Menu";
 }
@@ -39,29 +39,46 @@
                         </div>
                     </a>
                 </li>
+                
+               
+
             </ul>
+
+
+
             <div class="tab-content">
                 <div id="tab-1" class="tab-pane fade show p-0 active">
                     <div class="row g-4">
-                        @for(int i = 1; i<=8; i++)
+                        
+                        @foreach(var item in @Model)
                         {
-                            <partial name="_CardMenuPartial" />                        
+                            if (ViewBag.menuNames[0].Id == item.Id)
+                            {
+                                <partial name="_CardMenuPartial" model="@item"/>
+                            }
+                                                    
                         }                        
                     </div>
                 </div>
                 <div id="tab-2" class="tab-pane fade show p-0">
                     <div class="row g-4">
-                        @for (int i = 1; i <= 8; i++)
+                        @foreach (var item in @Model)
                         {
-                            <partial name="_CardMenuPartial" />
+                            if (ViewBag.menuNames[1].Id == item.Id)
+                            {
+                                <partial name="_CardMenuPartial" model="@item" />
+                            }
                         }                       
                     </div>
                 </div>
                 <div id="tab-3" class="tab-pane fade show p-0">
                     <div class="row g-4">
-                        @for (int i = 1; i <= 8; i++)
+                        @foreach (var item in @Model)
                         {
-                            <partial name="_CardMenuPartial" />
+                            if (ViewBag.menuNames[2].Id == item.Id)
+                            {
+                                <partial name="_CardMenuPartial" model="@item" />
+                            }
                         }
                     </div>
                 </div>

@@ -1,0 +1,93 @@
+﻿@model MenuPosition
+
+@{
+    ViewData["Title"] = "Add Menu Position";
+}
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<partial name="_NamePagePartial" />
+
+
+
+<div class="container-xxl py-5 px-0 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="row g-0">
+        <div class="col-md-6">
+            <div>
+                <img class="" src="~/img/menu-1.jpg" />
+            </div>
+        </div>
+        <div class="col-md-6 bg-dark d-flex align-items-center">
+            <div class="p-5 wow fadeInUp" data-wow-delay="0.2s">
+                <h5 class="section-title ff-secondary text-start text-primary fw-normal">Reservation</h5>
+                <h1 class="text-white mb-4">Add Menu Position</h1>
+                <form asp-controller="Admin" asp-action="Add" method="post" enctype="multipart/form-data">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input asp-for="Name" type="text" class="form-control" id="name" placeholder="Name">
+                                <label asp-for="Name">Name</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6"> 
+                            <div class="form-control">
+                                <label>Menu Name</label>
+                                <select name="menuNames" id="nameMenu" class="form-select" asp-items="@ViewBag.menuNames" multiple aria-label="Default select example">
+                                </select>
+                                @*<select asp-for="Id" class="form-select" id="nameMenu">
+                                    @for (int i = 0; i < ViewBag.menuNames.Count; i++)
+                                    {
+                                        <option value="@ViewBag.menuNames[i].Id">@ViewBag.menuNames[i].Name</option>
+                                    }
+
+                                </select>*@
+                                
+                            </div>
+                            
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input asp-for="Price" type="text" class="form-control" id="Price" placeholder="Price">
+                                <label asp-for="Price">Price</label>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+
+                            <input type="file" name="Image" class="form-control" id="inputGroupFile02">
+                            <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <textarea asp-for="Description" class=" form-control" placeholder="Description" id="message" style="height: 100px"></textarea>
+                                <label asp-for="Description">Description</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary w-100 py-3" type="submit">Book Now</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/lib/chosen/chosen.jquery.min.js"></script>
+    <script>
+        $('#nameMenu').chosen();
+    </script>
+}
+
+
+
+
+
+
+
+
+
+
+    

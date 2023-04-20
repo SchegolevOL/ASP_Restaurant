@@ -44,20 +44,38 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0 pe-4">
-                    <a asp-controller="Home" asp-action="Index" class="nav-item nav-link active">Home</a>
-                    <a asp-controller="Home" asp-action="About" class="nav-item nav-link">About</a>
-                    <a asp-controller="Home" asp-action="Services" class="nav-item nav-link">Service</a>
-                    <a asp-controller="Home" asp-action="Menu" class="nav-item nav-link">Menu</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">List</a>
                         <div class="dropdown-menu m-0">
-                            <a asp-controller="Home" asp-action="Booking" class="dropdown-item">Booking</a>
-                            <a asp-controller="Home" asp-action="Team" class="dropdown-item">Our Team</a>
+                            <a asp-controller="Admin" asp-action="ListMenuPosition" class="dropdown-item">Menu</a>
+                            <a asp-controller="Admin" asp-action="ListMenuName" class="dropdown-item">Name Menu</a>
                             <a asp-controller="Home" asp-action="Testimonial" class="dropdown-item">Testimonial</a>
                         </div>
                     </div>
-                    <a asp-controller="Home" asp-action="Contact" class="nav-item nav-link">Contact</a>
-                    <a asp-controller="Admin" asp-action="Admin" class="nav-item nav-link active">Admin</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Edit</a>
+                        <div class="dropdown-menu m-0">
+                            <a asp-controller="Home" asp-action="Booking" class="dropdown-item">Menu</a>
+                            <a asp-controller="Home" asp-action="Team" class="dropdown-item">Name Menu</a>
+                            <a asp-controller="Home" asp-action="Testimonial" class="dropdown-item">Testimonial</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Add</a>
+                        <div class="dropdown-menu m-0">
+                            <a asp-controller="Admin" asp-action="AddMenu" class="dropdown-item">Menu</a>
+                            <a asp-controller="Admin" asp-action="Team" class="dropdown-item">Name Menu</a>
+                            <a asp-controller="Admin" asp-action="Testimonial" class="dropdown-item">Testimonial</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Delete</a>
+                        <div class="dropdown-menu m-0">
+                            <a asp-controller="Admin" asp-action="Booking" class="dropdown-item">Menu</a>
+                            <a asp-controller="Admin" asp-action="Team" class="dropdown-item">Name Menu</a>
+                            <a asp-controller="Admin" asp-action="Testimonial" class="dropdown-item">Testimonial</a>
+                        </div>
+                    </div>
                 </div>
                 <a href="" class="btn btn-primary py-2 px-4">Book A Table</a>
             </div>
