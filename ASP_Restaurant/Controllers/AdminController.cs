@@ -2,6 +2,7 @@
 using ASP_Restaurant.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 
 namespace ASP_Restaurant.Controllers
@@ -58,8 +59,8 @@ namespace ASP_Restaurant.Controllers
         }
         public IActionResult ListMenuPosition()
         {
-
-            return View(this.restaurantDbContext.menuPositions.ToList());
+            ViewBag.menuNames = restaurantDbContext.menuNames.Include(x=>x.menuNamePositions).ToList();
+            return View(this.restaurantDbContext.menuPositions.Include(x=>x.menuNamePositions).ToList());
         }
 
 

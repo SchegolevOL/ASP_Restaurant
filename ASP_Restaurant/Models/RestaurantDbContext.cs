@@ -25,5 +25,10 @@ namespace ASP_Restaurant.Models
         public DbSet<MenuPosition>menuPositions { get; set; }
         public DbSet<MenuName>menuNames { get; set; }
         public DbSet<MenuNamePosition> menuNamePositions { get; set; }
+
+        public DbSet<Person> tabPerson { get; set; }
+        public DbSet<Post> tabPost { get; set; }
+        public DbSet<BookTable> tabBookTable { get; set; }
+
     }
 }
